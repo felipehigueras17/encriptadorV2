@@ -1,0 +1,682 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'DotGothic16', sans-serif;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    text-align: center;
+    color: rgba(190, 255, 190, .4);
+}
+
+::selection{
+    background-color:rgb(0, 230, 150) ;
+    color: #000;
+}
+
+textarea{
+    resize: none;
+}
+
+textarea:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+button:focus-visible{
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+::-webkit-scrollbar{
+    width: 7px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000;
+    border-radius: 20px;
+    border: 2px solid #0f0;
+}
+
+/*AQUI INICIA MI BODY*/
+#body {
+    box-sizing: border-box;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 35px;
+    background-color: #000;
+}
+
+#pagina{
+    background:none;
+    min-height: 100vh;
+    height: 100%;
+    width: 98vw;
+    margin: 0 .8vw;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+
+    grid-template-areas:"logo logo logo mostrar mostrar"
+                        "logo logo logo mostrar mostrar"
+                        "logo logo logo mostrar mostrar"
+                        "logo logo logo mostrar mostrar"
+                        "ingresar ingresar ingresar mostrar mostrar"
+                        "ingresar ingresar ingresar mostrar mostrar"
+                        "ingresar ingresar ingresar mostrar mostrar"
+                        "ingresar ingresar ingresar mostrar mostrar"
+                        "btn btn btn mostrar mostrar"
+                        "btn btn btn mostrar mostrar"
+                        "footer footer footer mostrar mostrar";
+}
+
+/*ESTE ES MI FONDO*/
+#canvas {
+    position: absolute;
+    background-color: #0f0;
+    border: none;
+    border-radius: 0px;
+    width: 99vw;
+    height: 100vh;
+    margin: 0 .5vw;
+    padding: 0%;
+}
+
+/*ESTE ES MI LOGO*/
+
+.logo{
+    grid-area: logo;
+    height: 100%;
+    width: 100%;
+}
+
+.logo h1 a{
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 65px;
+    padding: .15em .54em .45em .54em;
+    text-decoration:none;
+    border-radius:180px;
+    border: 10px solid #afa;
+    box-shadow: none;
+    animation: logo 4s linear infinite;
+}
+
+@keyframes logo{
+    0%{
+        margin: 5% 0 0 3%;
+        color: #afa;
+        text-shadow: 0px 0px 12px #00ff00, 0px 0px 8px #00ff00, 0px 0px 5px #00ff00;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 10px #00ff00, inset 0px 0px 8px #00ff00;
+    }
+    
+    50%{
+        margin: 6% 0 0 3%;
+        color: #5f5;
+        text-shadow: none;
+        box-shadow: none;
+        border: 3px solid #5f5;
+    }
+    
+    100%{
+        margin: 5% 0 0 3%;
+        color: #afa;
+        text-shadow: 0px 0px 12px #00ff00, 0px 0px 8px #00ff00, 0px 0px 5px #00ff00;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 10px #00ff00, inset 0px 0px 8px #00ff00;
+    }
+}
+
+/*BOTON DE BORRAR*/
+
+#borrar{
+    box-sizing: border-box;
+    background: #000;
+    position: absolute;
+    color: #00ff00;
+    scale: 1.6;
+    border: 1px solid #00ff00;
+    border-radius: 19px;
+    margin-left: 560px;
+    margin-top: 96px;
+    padding: 3px;
+}
+
+#borrar:hover{
+    cursor: pointer;    
+    color: #cfc;
+    text-shadow: 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, 0px 0px 5px #00ff00;
+}
+
+#borrar:active{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/*ESTE ES INGRESAR TEXTO*/
+
+#secText{
+    grid-area: ingresar;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    gap: 10px;
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#secText label{
+    box-sizing: border-box;
+    color: #fc0;
+    font-size: 18px;
+    text-align: center;
+    background-color: #111;
+    border: 3px solid #444;
+    border-radius: 30px;
+    padding: 5px;
+    width: 55%;
+    margin: 0 auto;
+}
+
+#ingTextAqui{
+    box-sizing: border-box;
+    font-family: 'DotGothic16', sans-serif;
+    text-align: center;
+    color: #00ff00;
+    font-size: 34px;
+    padding: 15px;
+    margin: 0 auto;
+    width: 70%;
+    height: 45%;
+    background-color:rgba(0, 0, 0,.7);
+}
+
+/*BOTON DE REPARAR*/
+
+#reparar{
+    box-sizing: border-box;
+    visibility:hidden;
+    text-align: center;
+    color: #00ff00;
+    font-size: .6em;
+    letter-spacing: 3px;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 10px;
+    border: 2px solid #0f0;
+    margin: 0 auto;
+    padding: 0;
+    width: 86%;
+}
+
+#reparar:hover{
+    background-color: black;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 15px #fc0, 0px 0px 10px #fc0, 0px 0px 5px #fc0, inset 0px 0px 5px #fc0, inset 0px 0px 3px #fc0;
+    color: #fff;
+    text-shadow: 0px 0px 15px #fc0, 0px 0px 10px #fc0, 0px 0px 5px #fc0;
+    scale: 1;
+}
+
+#reparar:hover .material-symbols-outlined{
+    text-shadow: 0px 0px 15px #fc0, 0px 0px 10px #fc0, 0px 0px 5px #fc0;
+    color: #fff;
+}
+
+#reparar:active{
+    background-color:rgba(255, 204, 0,.2);
+    border:2px solid #ff0;
+}
+
+/*ESTO SON MIS BOTONES DE ENCRIPTAR*/
+
+.botones{
+    grid-area: btn;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.boton{
+    box-sizing: border-box;
+    font-family: 'DotGothic16', sans-serif;
+    color: #00ff00;
+    font-size: 30px;
+    text-align: center;
+    padding: 1%;
+    width: 40%;
+    height: 60%;
+    background-color: rgba(0, 0, 0,.7);
+    margin: 0;
+    border:5px solid #00ff00;
+    letter-spacing: 3px;
+    transition: box-shadow 2s, text-shadow 5s, color 5s, border 2s, scale .5s;
+    transition-timing-function: ease;
+}
+
+button:hover{
+    color: #fff;
+    text-shadow: 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, 0px 0px 5px #00ff00;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 5px #00ff00, inset 0px 0px 3px #00ff00;
+    cursor: pointer;
+    scale: 1.1;
+    background-color: rgba(0, 0, 0,.7);
+}
+
+button:active{
+    background-color:rgba(0, 255, 0,.2);
+    border:2px solid #0f0;
+}
+
+/*ESTE ES MI MENSAJE CIFRADO*/
+
+.mensaje{
+    grid-area: mostrar;
+    width: 70%;
+    height: 90%;
+    margin: 5% auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background:rgba(0, 0, 0,.7);
+    animation: neon 2s infinite alternate;
+}
+
+#msg{
+    box-sizing: border-box;
+    background:none;
+    font-family:'DotGothic16', sans-serif;
+    text-align: center;
+    font-size: 33px;
+    color:#00ff00;
+    border: none;
+    padding: 20px;
+    width: 100%;
+    min-height: 80%;
+    cursor: default;
+}
+
+@keyframes neon {
+    0%{
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 15px #00ff00, inset 0px 0px 8px #00ff00;
+    }
+    
+    5.9%{
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 15px #00ff00, inset 0px 0px 8px #00ff00;
+        filter: brightness(0.7);
+    }
+    
+    6%{
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 15px #00ff00, inset 0px 0px 8px #00ff00;
+        filter: brightness(1);
+    }
+    
+    9.9%{
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 15px #00ff00, inset 0px 0px 8px #00ff00;
+        filter: brightness(0.9);
+    }
+    
+    10%{
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 15px #00ff00, inset 0px 0px 8px #00ff00;
+        filter: brightness(1);
+    }
+    
+    100%{
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 25px #00ff00, 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, inset 0px 0px 15px #00ff00, inset 0px 0px 8px #00ff00;
+        filter: brightness(1);
+    }
+}
+
+/*IMAGEN*/
+
+#imagen{
+    position: absolute;
+    opacity: .1;
+    width: 200px;
+    height: 200px;
+    margin: 25% 5% 0% 20px;
+    visibility: visible;
+}
+
+/*AQUI ES LA PARTE DE BONTON DE COPIAR*/
+
+.copiar{
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0,.7);
+    font-family: 'DotGothic16', sans-serif;
+    color: #00ff00;
+    font-size: 20px;
+    text-align: center;
+    padding: 1%;
+    margin: 0px 0px 30px 0px;
+    border:4px solid rgb(0, 255, 0);
+    transition: box-shadow 2s, text-shadow 1s, color .5s, border .5s, width 1s;
+    transition-timing-function: ease-out;
+    width: 45%;
+    height: 8%;
+}
+
+.copiar:hover{
+    width: 55%;
+    scale: 1;
+}
+
+/*PIE DE PAGINA*/
+
+.foot{
+    grid-area: footer;
+    background:none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.foot a img{
+    background: rgb(0, 0, 0);
+    height: 40px;
+    width: 40px;
+}
+
+.foot a:hover{
+    transition: all .5s;
+    scale: 1.4;
+    
+}
+
+.foot a:active{
+    background-color: #000;
+}
+
+.foot p{
+    background: rgba(0, 0, 0,.7);
+    padding: 5px;
+    color: #afa;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-shadow: 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, 0px 0px 5px #00ff00;
+    animation: copy .4s infinite alternate;
+}
+
+.foot p span{
+    color: #afa;
+    font-size: 1em;
+    text-shadow: 0px 0px 15px #00ff00, 0px 0px 10px #00ff00, 0px 0px 5px #00ff00;
+    animation: parpadear 1.8s infinite alternate;
+}
+
+.foot p:hover{
+    cursor:default;
+}
+
+@keyframes copy {
+    to{
+        filter: brightness(.9);
+    }
+}
+
+@keyframes parpadear{
+    0%{
+        filter:  brightness(.9);
+    }
+
+    9%{
+        filter: brightness(.9);
+    }
+
+    10%{
+        filter: brightness(0);
+    }
+
+    12%{
+        filter: brightness(.9);
+    }
+    
+    20%{
+        filter: brightness(0);
+    }
+    
+    30%{
+        filter: brightness(.9);
+    }
+    
+    100%{
+        filter: brightness(.9);
+    }
+}
+
+/*ESTA ES LA VIEWPORTDE TABLET*/
+@media screen  and (max-width:1024px) and (min-height: 700px){
+
+    #body{
+        font-size: 4vw;
+    }
+    
+    #pagina{
+        height: 150vh;
+        width: 98vw;
+        margin: 0 .8vw;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(14, 1fr);
+    
+        grid-template-areas:"logo logo"
+                            "logo logo"
+                            "ingresar ingresar"
+                            "ingresar ingresar"
+                            "ingresar ingresar"
+                            "ingresar ingresar"
+                            "ingresar ingresar"
+                            "btn btn"
+                            "mostrar mostrar"
+                            "mostrar mostrar"
+                            "mostrar mostrar"
+                            "mostrar mostrar"
+                            "mostrar mostrar"
+                            "footer footer";
+    }
+    
+
+    #canvas{
+        height: 150vh;
+    }
+
+    /*BOTON DE BORRAR*/
+
+    #borrar{
+        margin: 8% 0% 0% 80%;
+        scale: 1.5;
+    }
+    
+    /*INGRESAR TEXTO*/
+    
+    #secText label{
+        font-size: .5em;
+        width: 80%;
+    }
+    
+    #ingTextAqui{
+        font-size: 1.2em;
+    }
+
+    #reparar{
+        font-size: .8em;
+    }
+    
+    #reparar .material-symbols-outlined{
+        scale: 1.4;
+    }
+    
+    /*MENSAJE SECRETO*/
+    
+    .mensaje{
+        height: 100%;
+        width: 90%;
+        margin: 0 5%;
+    }
+    
+    #msg{
+        font-size: 1.2em;
+    }
+    
+    /*BOTON DE COPIAR*/
+    
+    .copiar{
+        height: 10%;
+    }
+    
+    /*IMAGEN*/
+    
+    #imagen{
+        margin: 10% 0% 0% 20px;
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+/*ESTA ES LA VIEWPORT DE CELULAR*/
+@media screen  and (max-width:600px){
+
+    #body {
+        font-size: 4vw;
+    }
+    
+    #pagina{
+        height: 155vh;
+        width: 98vw;
+        margin: 0 .8vw;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(16, 1fr);
+        
+        grid-template-areas:"logo logo"
+        "logo logo"
+        "ingresar ingresar"
+        "ingresar ingresar"
+        "ingresar ingresar"
+        "ingresar ingresar"
+        "btn btn"
+        "btn btn"
+        "mostrar mostrar"
+        "mostrar mostrar"
+        "mostrar mostrar"
+        "mostrar mostrar"
+        "mostrar mostrar"
+        "mostrar mostrar"
+        "footer footer"
+        "footer footer";
+    }
+    
+    #canvas{
+        height: 155vh;
+    }
+    
+    /*BOTON DE BORRAR*/
+    
+    #borrar{
+        margin: -20% 0% 0% 80%;
+    }
+    
+    /*INGRESAR TEXTO*/
+    
+    #secText label{
+        font-size: .7em;
+        width: 85%;
+    }
+
+    #ingTextAqui{
+        font-size: 1.2em;
+    }
+
+    #reparar{
+        font-size: .9em;
+    }
+    
+    #reparar .material-symbols-outlined{
+        scale: .9;
+    }
+    
+    /*BOTONES DE ENCRIPTADO*/
+    
+    .botones{
+        flex-direction: column;
+    }
+    
+    .boton{
+        width: 50%;
+        height: 35%;
+        padding: 0%;
+        font-size: 20px;
+    }
+    
+    /*MENSAJE SECRETO*/
+
+    .mensaje{
+        height: 99%;
+        width: 90%;
+        margin: 0 5%;
+    }
+    
+    #msg{
+        font-size: 28px;
+    }
+    
+    /*BOTON DE COPIAR*/
+
+    .copiar{
+        height: 90%;
+        margin: 0% 0% 5% 0%;
+        font-size: 20px;
+    }
+    
+    /*IMAGEN*/
+
+    #imagen{
+        margin: 0% 0% 0% 20px;
+        width: 110px;
+        height: 110px;
+    }
+
+    /*PIE DE PAGINA*/
+
+    .foot{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 15%;
+        margin: 1%;
+    }
+
+    .foot a img{
+        width: 30px;
+        height: 30px;
+    }
+    
+    .foot a:hover{
+        scale: 30px;
+    }
+
+    .foot p{
+        font-size: 14px;
+    }
+}
